@@ -1,10 +1,3 @@
-/*
- * Keypad_Driver_AVR.h
- *
- * Created: 8/12/2018 4:55:38 PM
- *  Author: em139
- */ 
-
 
 #ifndef KEYPAD_DRIVER_AVR_H_
 #define KEYPAD_DRIVER_AVR_H_
@@ -16,14 +9,18 @@
 #define delay(x) _delay_ms(x)
 
 #define KPORT A
-#define PA 1
-#define PB 2
-#define PC 3
-#define PD 4
+#define KPORT2 B
+#define PA 0
+#define PB 1
+#define PC 2
+#define PD 3
 
-#define P1 5
-#define P2 6
-#define P3 7
+#define P1 0
+#define P2 1
+#define P3 2
+#define P4 3
+#define P5 4
+#define P6 5
 
 /**/
 void Keypad_Intial();
