@@ -1,4 +1,7 @@
+/* this function i wrote it to easily use GPIO of atmega32 microcontroller
 
+
+*/
 #include "GBIO_Drivers_AVR.h"
 
 void PortDir(char port ,char state)
