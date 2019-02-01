@@ -1,9 +1,4 @@
-/*
- * LCD_Driver_AVR.c
- *
- * Created: 9/2/2018 4:20:23 PM
- *  Author: em139
- */ 
+
 
 #include <avr/io.h>
 #include <avr/delay.h>
@@ -11,6 +6,7 @@
 //#define F_CPU 4000000
 #include "LCD_Driver_AVR.h"
 
+#define Mode 8
 void LCD_Intial()
 {
 	_delay_ms(15);
