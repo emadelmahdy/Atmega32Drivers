@@ -1,10 +1,8 @@
-/*
- * Keypad_Driver_AVR.c
- *
- * Created: 8/12/2018 4:55:04 PM
- *  Author: em139
- */ 
 
+/*this is keypad driver, it contain function for handling keypad 
+
+
+*/
 #include <avr/io.h>
 #include <util/delay.h>
 #include "GBIO_Drivers_AVR.h"
@@ -21,29 +19,30 @@ void Keypad_Intial()
 	PinSet(KPORT,PC);
 	PinSet(KPORT,PD);
 	
-	PinDir(KPORT,P1,input);
-	PinDir(KPORT,P2,input);
-	PinDir(KPORT,P3,input);
+	PinDir(KPORT2,P1,input);
+	PinDir(KPORT2,P2,input);
+	PinDir(KPORT2,P3,input);
+	PinDir(KPORT2,P4,input);
+	PinDir(KPORT2,P5,input);
+	PinDir(KPORT2,P6,input);
 }
 
 unsigned char Kepad_Pressed()
 {
 	
 	
-	unsigned char i;
-					           };
 	PinReset(KPORT,PA);
 	PinReset(KPORT,PB);
 	PinReset(KPORT,PC);
 	PinReset(KPORT,PD);
-	while(!(PinRead(KPORT,P1)&&PinRead(KPORT,P2)&&PinRead(KPORT,P3)));    //all keys open = 0
+	while( !(PinRead(KPORT2,P1)&&PinRead(KPORT2,P2)&&PinRead(KPORT2,P3)&&PinRead(KPORT2,P4)&&PinRead(KPORT2,P5)&&PinRead(KPORT2,P6)) );    //all keys open = 0
 	
 	while(1)
 	{
-		if (!(PinRead(KPORT,P1)&&PinRead(KPORT,P2)&&PinRead(KPORT,P3)))
+		if (!(PinRead(KPORT2,P1)&&PinRead(KPORT2,P2)&&PinRead(KPORT2,P3)&&PinRead(KPORT2,P4)&&PinRead(KPORT2,P5)&&PinRead(KPORT2,P6)))
 		{
 			delay(20);
-			if (!(PinRead(KPORT,P1)&&PinRead(KPORT,P2)&&PinRead(KPORT,P3))) break;
+			if (!(PinRead(KPORT2,P1)&&PinRead(KPORT2,P2)&&PinRead(KPORT2,P3)&&PinRead(KPORT2,P4)&&PinRead(KPORT2,P5)&&PinRead(KPORT2,P6))) break;
 		}
 		
 	}
@@ -54,17 +53,29 @@ unsigned char Kepad_Pressed()
 	
 	PinReset(KPORT,PA);
 	
-		if (!PinRead(KPORT,P1))
+		if (!PinRead(KPORT2,P1))
 		{
-			return 1;
+			return 'R';
 		}
-		if (!PinRead(KPORT,P2))
+		if (!PinRead(KPORT2,P2))
 		{
-			return 2;
+			return 7;
 		}
-		if (!PinRead(KPORT,P3))
+		if (!PinRead(KPORT2,P3))
 		{
-			return 3;
+			return 8;
+		}
+		if (!PinRead(KPORT2,P4))
+		{
+			return 9;
+		}
+		if (!PinRead(KPORT2,P5))
+		{
+			return '*';
+		}
+		if (!PinRead(KPORT2,P6))
+		{
+			return '/';
 		}
 		
 	
@@ -74,20 +85,29 @@ unsigned char Kepad_Pressed()
 	
 	PinReset(KPORT,PB);
 	
-		if (!PinRead(KPORT,P1))
+		if (!PinRead(KPORT2,P1))
 		{
-			
+			return 0;
+		}
+		if (!PinRead(KPORT2,P2))
+		{
 			return 4;
 		}
-		if (!PinRead(KPORT,P2))
+		if (!PinRead(KPORT2,P3))
 		{
-			
 			return 5;
 		}
-		if (!PinRead(KPORT,P3))
+		if (!PinRead(KPORT2,P4))
 		{
-			
 			return 6;
+		}
+		if (!PinRead(KPORT2,P5))
+		{
+			return '-';
+		}
+		if (!PinRead(KPORT2,P6))
+		{
+			return 0;
 		}
 		
 	
@@ -95,22 +115,29 @@ unsigned char Kepad_Pressed()
 	PinReset(KPORT,PC);
 	
 	
-		if (!PinRead(KPORT,P1))
+		if (!PinRead(KPORT2,P1))
 		{
-			
-			return 7;
+			return '%';
 		}
-		
-		
-		if (!PinRead(KPORT,P2))
+		if (!PinRead(KPORT2,P2))
 		{
-			
-			return 8;
+			return 1;
 		}
-		if (!PinRead(KPORT,P3))
+		if (!PinRead(KPORT2,P3))
 		{
-			
-			return 9;
+			return 2;
+		}
+		if (!PinRead(KPORT2,P4))
+		{
+			return 3;
+		}
+		if (!PinRead(KPORT2,P5))
+		{
+			return '+';
+		}
+		if (!PinRead(KPORT2,P6))
+		{
+			return 0;
 		}
 		
 		
@@ -120,20 +147,29 @@ unsigned char Kepad_Pressed()
 	
 	PinReset(KPORT,PD);
 	
-		if (!PinRead(KPORT,P1))
+		if (!PinRead(KPORT2,P1))
 		{
-			
-			return '*';
+			return '^';
 		}
-		if (!PinRead(KPORT,P2))
+		if (!PinRead(KPORT2,P2))
 		{
-			
 			return 0;
 		}
-		if (!PinRead(KPORT,P3))
+		if (!PinRead(KPORT2,P3))
 		{
-			
-			return '#';
+			return '.';
+		}
+		if (!PinRead(KPORT2,P4))
+		{
+			return '=';
+		}
+		if (!PinRead(KPORT2,P5))
+		{
+			return '+';
+		}
+		if (!PinRead(KPORT2,P6))
+		{
+			return 0;
 		}
 		
 		
@@ -151,10 +187,10 @@ int Keypad_Get_Num()
 	int key=0;
 	while(1)
 	{
-	//	Keypad_Intial();
+	
 		
 		key=Kepad_Pressed();
-		if (key!='#')
+		if (key!='=')
 		{
 			n=n*10+key;
 		}
