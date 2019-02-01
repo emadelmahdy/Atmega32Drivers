@@ -1,9 +1,4 @@
-/*
- * LCD_Driver_AVR.h
- *
- * Created: 9/2/2018 4:20:36 PM
- *  Author: em139
- */ 
+
 
 
 #ifndef LCD_DRIVER_AVR_H_
@@ -22,9 +17,9 @@
 #define P6 6
 #define P7 7
 #define InsPort C
-#define E 1
-#define RS 0
-#define Mode 8
+#define E 4
+#define RS 2
+
 /*************************************************/
 
 
